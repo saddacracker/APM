@@ -10,8 +10,8 @@ import { ProductService } from './product.service';
 
 export class ProductListComponent implements OnInit {
   
-  constructor(private productService: ProductService) {
-  }
+  // inject ProductService instance with shorthand
+  constructor(private productService: ProductService) {}
 
   pageTitle: string = 'Product List!';
   imageWidth: number = 50;
@@ -19,6 +19,7 @@ export class ProductListComponent implements OnInit {
   showImage: boolean = false;
   errorMessage: string;
   
+  // List Filter Getter & Setter
   _listFilter: string;
   get listFilter(): string {
     return this._listFilter;
@@ -28,6 +29,7 @@ export class ProductListComponent implements OnInit {
     this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products;
   } 
 
+  // Declare 
   filteredProducts: IProduct[];
   products: IProduct[] = [];
 
@@ -49,6 +51,8 @@ export class ProductListComponent implements OnInit {
   // lifecycle hooks
   ngOnInit(): void {
     console.log('In OnInit');
+
+    // subscribe to the product service
     this.productService.getProducts().subscribe({
       next: products => {
         this.products = products;

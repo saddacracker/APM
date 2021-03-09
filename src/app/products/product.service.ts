@@ -9,11 +9,15 @@ import { IProduct } from './product';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProductService {
   private productUrl = 'api/products/products.json'
 
+  // Pass in http client
   constructor(private http: HttpClient) {}
 
+  // use Observable to fetch products
+  // assign <IProduct[]> type to the Observable return object
   getProducts(): Observable<IProduct[]> {
     return this.http.get<IProduct[]>(this.productUrl)
       .pipe(
