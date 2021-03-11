@@ -8,15 +8,12 @@ import { WelcomeComponent } from './home/welcome.component';
 import { ProductModule } from './products/product.module';
 
 @NgModule({
-  // ours
   declarations: [
     AppComponent,
     WelcomeComponent
   ],
-  // from angular
   imports: [
-
-  BrowserModule,
+    BrowserModule,
     HttpClientModule,
     RouterModule.forRoot([
       { path: 'welcome', component: WelcomeComponent },
